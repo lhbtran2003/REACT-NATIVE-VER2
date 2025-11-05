@@ -1,50 +1,63 @@
-# Welcome to your Expo app 👋
+# React Native Camera App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Ứng dụng camera React Native với chức năng chụp ảnh và quay video.
 
-## Get started
+## Tính năng
 
-1. Install dependencies
+- ✅ Chụp ảnh với camera trước/sau
+- ✅ Quay video với camera trước/sau  
+- ✅ Chuyển đổi giữa chế độ chụp ảnh và quay video
+- ✅ Lưu ảnh và video vào thư viện thiết bị
+- ✅ Preview ảnh và video sau khi chụp/quay
+- ✅ Giao diện thân thiện với người dùng
 
-   ```bash
-   npm install
-   ```
+## Cài đặt
 
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
+1. Cài đặt dependencies:
 ```bash
-npm run reset-project
+npm install expo-camera expo-media-library @expo/vector-icons
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+2. Cấp quyền camera và thư viện trong app.json:
+```json
+{
+  "expo": {
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Cho phép ứng dụng truy cập camera để chụp ảnh và quay video."
+        }
+      ],
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "Cho phép ứng dụng truy cập thư viện ảnh để lưu ảnh và video.",
+          "savePhotosPermission": "Cho phép ứng dụng lưu ảnh và video vào thư viện.",
+          "isAccessMediaLocationEnabled": true
+        }
+      ]
+    ]
+  }
+}
+```
 
-## Learn more
+## Sử dụng
 
-To learn more about developing your project with Expo, look at the following resources:
+1. Mở ứng dụng và cấp quyền camera và thư viện
+2. Chọn chế độ "Ảnh" hoặc "Video" ở phía trên camera
+3. Nhấn nút chụp/quay ở giữa màn hình
+4. Xem preview và lưu vào thư viện
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Cấu trúc code
 
-## Join the community
+- `Bt1.tsx`: Component chính chứa logic camera và UI
+- Sử dụng `expo-camera` cho chức năng camera
+- Sử dụng `expo-media-library` để lưu file
+- State management với React hooks
 
-Join our community of developers creating universal apps.
+## Lưu ý
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- Cần cấp quyền camera và thư viện để sử dụng
+- Video sẽ được lưu tự động sau khi quay xong
+- Ảnh và video được lưu vào thư viện mặc định của thiết bị

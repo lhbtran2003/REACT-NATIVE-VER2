@@ -1,13 +1,20 @@
-import { Link } from 'expo-router';
-import React from 'react'
-import { Text, View } from 'react-native'
 
-export default function index() {
+import Notification from '@/components/Notification';
+import React from 'react';
+import { SafeAreaView, View } from 'react-native';
+
+const YourApp = () => {
   return (
-    <View style={{margin: 100}}>
-      <Link href="/camera">
-        <Text style={{fontSize: 25, fontWeight: 'bold'}}>Mở Camera</Text>
-      </Link>
-    </View>
+   <SafeAreaView style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+   {/* <View style={{ marginBottom: 24 }}>
+     <AvatarPicker />
+   </View> */}
+   {/* <Bt1/> */}
+   <View style={{ marginTop: 24 }}>
+     <Notification />
+   </View>
+   </SafeAreaView>
   );
-}
+};
+
+export default YourApp;
